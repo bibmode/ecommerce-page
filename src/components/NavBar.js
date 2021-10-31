@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "5px",
   },
   avatar: {
-    width: "1.8rem",
-    height: "auto",
     marginLeft: theme.spacing(1),
+    width: "30px !important",
+    height: "30px !important",
   },
 }));
 
@@ -45,6 +45,7 @@ const NavBar = () => {
 
   return (
     <nav className={classes.container}>
+      {/* nav bar components */}
       <IconButton onClick={handleDrawer} aria-label="open drawer">
         <MenuIcon className={classes.icon} />
       </IconButton>
@@ -58,6 +59,7 @@ const NavBar = () => {
         src="images/image-avatar.png"
       />
 
+      {/* drawer */}
       <SwipeableDrawer
         anchor={"left"}
         open={drawer}

@@ -2,3 +2,25 @@
   text-align: center;
   font-family: "Kumbh Sans", sans-serif;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50%;
+}
+
+.swiper-button-prev {
+  background: url("photos/icon-previous.svg") no-repeat 47% 50%/23%, #fff;
+  margin-left: 5px;
+}
+
+.swiper-button-next {
+  background: url("photos/icon-next.svg") no-repeat 51% 50%/23%, #fff;
+  margin-right: 5px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
