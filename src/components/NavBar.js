@@ -14,11 +14,14 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: theme.palette.text.primary,
   },
+  iconBtn: {
+    paddingLeft: "0 !important",
+  },
   container: {
     display: "flex",
     alignItems: "center",
-    padding: theme.spacing(2),
-    paddingRight: theme.spacing(3),
+    padding: theme.spacing(1.5),
+    paddingInline: theme.spacing(3),
   },
   logo: {
     marginRight: "auto",
@@ -46,10 +49,16 @@ const NavBar = () => {
   return (
     <nav className={classes.container}>
       {/* nav bar components */}
-      <IconButton onClick={handleDrawer} aria-label="open drawer">
+      <IconButton
+        className={classes.iconBtn}
+        onClick={handleDrawer}
+        aria-label="open drawer"
+      >
         <MenuIcon className={classes.icon} />
       </IconButton>
+
       <img className={classes.logo} src="images/logo.svg" alt="page logo" />
+
       <IconButton aria-label="open shopping cart">
         <ShoppingCartOutlinedIcon className={classes.icon} />
       </IconButton>
