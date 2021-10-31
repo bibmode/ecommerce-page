@@ -1,10 +1,9 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
-import { indigo } from "@mui/material/colors";
 
 const useStyle = makeStyles((theme) => ({
   addBtn: {

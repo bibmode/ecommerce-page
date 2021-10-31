@@ -4,6 +4,7 @@ import { orange } from "@mui/material/colors";
 import NavBar from "./components/NavBar";
 import ImageSlides from "./components/ImageSlides";
 import Product from "./components/Product";
+import Cart from "./components/Cart";
 
 const appTheme = createTheme({
   palette: {
@@ -35,6 +36,7 @@ function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <div className="App">
+        <Cart />
         <NavBar />
         <ImageSlides />
         <Product />

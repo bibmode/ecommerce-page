@@ -27,8 +27,6 @@ const ImageSlides = () => {
       modules={[Navigation]}
       spaceBetween={0}
       slidesPerView={1}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
       navigation={true}
     >
       {images.map((image, index) => (
