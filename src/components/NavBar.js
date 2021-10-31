@@ -1,5 +1,5 @@
 // components
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, IconButton, SwipeableDrawer } from "@mui/material";
 
 //icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -7,6 +7,8 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 //material styling
 import { makeStyles } from "@mui/styles";
+import { useState } from "react";
+import Menu from "./Menu";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -31,10 +33,19 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
+  const [drawer, setDrawer] = useState(false);
+
+  const handleDrawer = () => {
+    setDrawer(!drawer);
+  };
+
+  const toggleDrawer = (open) => (event) => {
+    setDrawer(open);
+  };
 
   return (
     <nav className={classes.container}>
-      <IconButton aria-label="open drawer">
+      <IconButton onClick={handleDrawer} aria-label="open drawer">
         <MenuIcon className={classes.icon} />
       </IconButton>
       <img className={classes.logo} src="images/logo.svg" alt="page logo" />
@@ -46,6 +57,15 @@ const NavBar = () => {
         alt="user image"
         src="images/image-avatar.png"
       />
+
+      <SwipeableDrawer
+        anchor={"left"}
+        open={drawer}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+      >
+        <Menu handleDrawer={handleDrawer} />
+      </SwipeableDrawer>
     </nav>
   );
 };
