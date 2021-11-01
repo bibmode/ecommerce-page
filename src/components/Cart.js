@@ -6,6 +6,7 @@ import styled from "styled-components";
 //material styling
 import { makeStyles } from "@mui/styles";
 import { grey } from "@mui/material/colors";
+import CartItem from "./CartItem";
 
 const useStyles = makeStyles((theme) => ({
   emptyCartText: {
@@ -32,10 +33,11 @@ const Card = styled.div`
 `;
 
 const Items = styled.div`
-  height: 12.5rem;
+  min-height: 11.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-inline: 24px;
 `;
 
 const Cart = () => {
@@ -43,14 +45,15 @@ const Cart = () => {
 
   return (
     <Card>
-      <Typography className={classes.titleText} py={2} px={3}>
+      <Typography className={classes.titleText} py={2.5} px={3}>
         Cart
       </Typography>
       <Divider />
       <Items>
-        <Typography className={classes.emptyCartText} color="GrayText">
+        {/* <Typography className={classes.emptyCartText} color="GrayText">
           Your cart is empty.
-        </Typography>
+        </Typography> */}
+        <CartItem />
       </Items>
     </Card>
   );
