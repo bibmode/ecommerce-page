@@ -9,11 +9,11 @@ import { grey } from "@mui/material/colors";
 
 const useStyles = makeStyles((theme) => ({
   emptyCartText: {
-    fontWeight: 700,
+    fontWeight: "700 !important",
     letterSpacing: "0.8px",
   },
   titleText: {
-    fontWeight: 700,
+    fontWeight: "700 !important",
     color: grey[900],
   },
 }));

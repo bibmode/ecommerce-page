@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import ImageSlides from "./components/ImageSlides";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
+import { useState } from "react";
 
 const appTheme = createTheme({
   palette: {
@@ -33,11 +34,17 @@ const appTheme = createTheme({
 });
 
 function App() {
+  const [cart, setCart] = useState(false);
+
+  const toggleCart = () => {
+    setCart(!cart);
+  };
+
   return (
     <ThemeProvider theme={appTheme}>
       <div className="App">
-        <Cart />
-        <NavBar />
+        {cart && <Cart />}
+        <NavBar toggleCart={() => toggleCart()} />
         <ImageSlides />
         <Product />
       </div>

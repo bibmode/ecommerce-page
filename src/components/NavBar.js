@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+const NavBar = ({ toggleCart }) => {
   const classes = useStyles();
   const [drawer, setDrawer] = useState(false);
 
@@ -59,7 +59,7 @@ const NavBar = () => {
 
       <img className={classes.logo} src="images/logo.svg" alt="page logo" />
 
-      <IconButton aria-label="open shopping cart">
+      <IconButton aria-label="open shopping cart" onClick={toggleCart}>
         <ShoppingCartOutlinedIcon className={classes.icon} />
       </IconButton>
       <Avatar
