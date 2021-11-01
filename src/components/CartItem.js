@@ -36,7 +36,18 @@ const useStyles = makeStyles((theme) => ({
 const CartItem = () => {
   const classes = useStyles();
 
-  const { setEmptyCart } = useContext(AppContext);
+  const { setEmptyCart, productDetails, setProductDetails } =
+    useContext(AppContext);
+
+  const discountedPrice =
+    productDetails.originalPrice * (productDetails.discount / 100);
+
+  const totalPrice = discountedPrice * productDetails.quantity;
+
+  const handleDelete = () => {
+    setProductDetails({ ...productDetails, quantity: 0 });
+    setEmptyCart(true);
+  };
 
   return (
     <Box className={classes.box} mb={3}>
@@ -54,18 +65,17 @@ const CartItem = () => {
         </Grid>
         <Grid className={classes.info} item xs={7}>
           <Typography className={classes.itemName} color="GrayText">
-            Autumn Limited Edition Sneakers
+            {productDetails.name}
           </Typography>
           <Typography mr={1} color="GrayText">
-            $125.00 x 3
+            {`$${discountedPrice.toFixed(2)} x ${productDetails.quantity}`}
           </Typography>
-          <Typography fontWeight="700">$375.00</Typography>
+          <Typography fontWeight="700">
+            {`$${totalPrice.toFixed(2)}`}
+          </Typography>
         </Grid>
         <Grid className={classes.delete} item xs={2.5}>
-          <IconButton
-            onClick={() => setEmptyCart(true)}
-            className={classes.icon}
-          >
+          <IconButton onClick={handleDelete} className={classes.icon}>
             <img src="images/icon-delete.svg" alt="delete item" />
           </IconButton>
         </Grid>

@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../App";
 
 const useStyle = makeStyles((theme) => ({
@@ -20,13 +20,11 @@ const MyButton = ({ label, icon, shadow, btnFunction }) => {
   };
 
   const classes = useStyle(props);
-  const { setEmptyCart, setProductDetails, productDetails } =
-    useContext(AppContext);
+  const { setEmptyCart, productDetails } = useContext(AppContext);
 
   const btnCustomActions = () => {
     if (btnFunction === "addItem" && productDetails.quantity > 0) {
       setEmptyCart(false);
-      setProductDetails({ ...productDetails, quantity: 0 });
     } else {
       setEmptyCart(true);
     }
