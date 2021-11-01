@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import ImageSlides from "./components/ImageSlides";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useRef, useState, useEffect, useCallback } from "react";
 
 const appTheme = createTheme({
   palette: {
@@ -47,14 +47,13 @@ function App() {
       "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
   });
 
-  useEffect(() => {
-    console.log(productDetails);
-    console.log(emptyCart);
-  }, [productDetails, emptyCart]);
-
   const toggleCart = () => {
     setCart(!cart);
   };
+
+  // const cartRef = useRef(null);
+
+  const myCart = useCallback((node) => {}, []);
 
   return (
     <ThemeProvider theme={appTheme}>
@@ -65,10 +64,12 @@ function App() {
           toggleCart,
           productDetails,
           setProductDetails,
+          setCart,
+          cart,
         }}
       >
         <div className="App">
-          {cart && <Cart />}
+          {cart && <Cart myCart={myCart} />}
           <NavBar />
           <ImageSlides />
           <Product />

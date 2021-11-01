@@ -10,7 +10,7 @@ import CartItem from "./CartItem";
 import MyButton from "./MyButton";
 
 import { AppContext } from "../App";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   emptyCartText: {
@@ -45,28 +45,37 @@ const Items = styled.div`
   padding-inline: 24px;
 `;
 
-const Cart = () => {
+const Cart = ({ myCart }) => {
   const classes = useStyles();
 
   // use context
-  const { emptyCart } = useContext(AppContext);
+  const { emptyCart, productDetails, setCart, cart } = useContext(AppContext);
+
+  useEffect(() => {
+    cart &&
+      document.addEventListener("click", (e) => {
+        if (!document.querySelector("#cart").contains(e.target)) {
+          setCart(!cart);
+        }
+      });
+  }, [myCart, setCart, cart]);
 
   return (
-    <Card>
+    <Card id="cart">
       <Typography className={classes.titleText} py={2.5} px={3}>
         Cart
       </Typography>
       <Divider />
       <Items>
-        {emptyCart ? (
-          <Typography className={classes.emptyCartText} color="GrayText">
-            Your cart is empty.
-          </Typography>
-        ) : (
+        {!emptyCart && productDetails.quantity > 0 ? (
           <>
             <CartItem />
             <MyButton btnFunction="checkout" label="Checkout" shadow={true} />
           </>
+        ) : (
+          <Typography className={classes.emptyCartText} color="GrayText">
+            Your cart is empty.
+          </Typography>
         )}
       </Items>
     </Card>

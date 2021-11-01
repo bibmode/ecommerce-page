@@ -11,6 +11,8 @@ import { useContext, useState } from "react";
 import Menu from "./Menu";
 
 import { AppContext } from "../App";
+import { orange } from "@mui/material/colors";
+import { Box } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -34,14 +36,31 @@ const useStyles = makeStyles((theme) => ({
     width: "30px !important",
     height: "30px !important",
   },
+  cart: {
+    position: "relative",
+  },
+  cartQuantity: {
+    fontSize: 10,
+    position: "absolute",
+    top: 3,
+    right: 3,
+    width: "fit-content",
+    height: "fit-content",
+    paddingInline: 7,
+    paddingBlock: 1,
+    borderRadius: 20,
+    background: orange[600],
+    color: "#fff",
+  },
 }));
 
 const NavBar = () => {
-  const classes = useStyles();
-  const [drawer, setDrawer] = useState(false);
-
   // use context
-  const { toggleCart } = useContext(AppContext);
+  const { toggleCart, productDetails, emptyCart } = useContext(AppContext);
+
+  const classes = useStyles();
+
+  const [drawer, setDrawer] = useState(false);
 
   const handleDrawer = () => {
     setDrawer(!drawer);
@@ -64,8 +83,15 @@ const NavBar = () => {
 
       <img className={classes.logo} src="images/logo.svg" alt="page logo" />
 
-      <IconButton aria-label="open shopping cart" onClick={toggleCart}>
+      <IconButton
+        className={classes.cart}
+        aria-label="open shopping cart"
+        onClick={toggleCart}
+      >
         <ShoppingCartOutlinedIcon className={classes.icon} />
+        {productDetails.quantity > 0 && !emptyCart && (
+          <Box className={classes.cartQuantity}>{productDetails.quantity}</Box>
+        )}
       </IconButton>
       <Avatar
         className={classes.avatar}

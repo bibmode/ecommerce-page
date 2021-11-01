@@ -41,6 +41,8 @@ const AddOptions = () => {
                 quantity: 0,
               }
         );
+
+    productDetails === 0 && setEmptyCart(true);
   };
 
   return (
