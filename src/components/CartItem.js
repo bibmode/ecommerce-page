@@ -3,6 +3,8 @@ import { Box } from "@mui/system";
 //material styling
 import { makeStyles } from "@mui/styles";
 import { Grid, IconButton, Typography } from "@mui/material";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -34,8 +36,10 @@ const useStyles = makeStyles((theme) => ({
 const CartItem = () => {
   const classes = useStyles();
 
+  const { setEmptyCart } = useContext(AppContext);
+
   return (
-    <Box className={classes.box}>
+    <Box className={classes.box} mb={3}>
       <Grid
         container
         alignItems="center"
@@ -58,7 +62,10 @@ const CartItem = () => {
           <Typography fontWeight="700">$375.00</Typography>
         </Grid>
         <Grid className={classes.delete} item xs={2.5}>
-          <IconButton className={classes.icon}>
+          <IconButton
+            onClick={() => setEmptyCart(true)}
+            className={classes.icon}
+          >
             <img src="images/icon-delete.svg" alt="delete item" />
           </IconButton>
         </Grid>

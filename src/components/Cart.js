@@ -7,6 +7,10 @@ import styled from "styled-components";
 import { makeStyles } from "@mui/styles";
 import { grey } from "@mui/material/colors";
 import CartItem from "./CartItem";
+import MyButton from "./MyButton";
+
+import { AppContext } from "../App";
+import { useContext } from "react";
 
 const useStyles = makeStyles((theme) => ({
   emptyCartText: {
@@ -35,6 +39,7 @@ const Card = styled.div`
 const Items = styled.div`
   min-height: 11.8rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-inline: 24px;
@@ -43,6 +48,9 @@ const Items = styled.div`
 const Cart = () => {
   const classes = useStyles();
 
+  // use context
+  const { emptyCart } = useContext(AppContext);
+
   return (
     <Card>
       <Typography className={classes.titleText} py={2.5} px={3}>
@@ -50,10 +58,16 @@ const Cart = () => {
       </Typography>
       <Divider />
       <Items>
-        {/* <Typography className={classes.emptyCartText} color="GrayText">
-          Your cart is empty.
-        </Typography> */}
-        <CartItem />
+        {emptyCart ? (
+          <Typography className={classes.emptyCartText} color="GrayText">
+            Your cart is empty.
+          </Typography>
+        ) : (
+          <>
+            <CartItem />
+            <MyButton label="Checkout" shadow={true} />
+          </>
+        )}
       </Items>
     </Card>
   );

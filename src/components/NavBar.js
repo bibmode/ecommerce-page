@@ -7,8 +7,10 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 //material styling
 import { makeStyles } from "@mui/styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Menu from "./Menu";
+
+import { AppContext } from "../App";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -34,9 +36,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = ({ toggleCart }) => {
+const NavBar = () => {
   const classes = useStyles();
   const [drawer, setDrawer] = useState(false);
+
+  // use context
+  const { toggleCart } = useContext(AppContext);
 
   const handleDrawer = () => {
     setDrawer(!drawer);

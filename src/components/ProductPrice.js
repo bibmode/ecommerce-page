@@ -5,6 +5,9 @@ import { Box } from "@mui/system";
 import { makeStyles } from "@mui/styles";
 import { grey, orange } from "@mui/material/colors";
 
+import { AppContext } from "../App";
+import { useContext } from "react";
+
 const useStyle = makeStyles((theme) => ({
   box: {
     paddingTop: theme.spacing(1),
@@ -25,12 +28,18 @@ const useStyle = makeStyles((theme) => ({
 const ProductPrice = () => {
   const classes = useStyle();
 
+  // use context
+  const { productDetails } = useContext(AppContext);
+
+  const discountedPrice =
+    productDetails.originalPrice * (productDetails.discount / 100);
+
   return (
     <Box className={classes.box}>
       <Grid container alignItems="center">
         <Grid item mr={1.5}>
           <Typography component="h4" variant="h5">
-            $125.00
+            ${discountedPrice.toFixed(2)}
           </Typography>
         </Grid>
         <Grid item mr="auto">
@@ -40,7 +49,7 @@ const ProductPrice = () => {
             component="h4"
             variant="h6"
           >
-            50%
+            {productDetails.discount}%
           </Typography>
         </Grid>
         <Grid item>
@@ -49,7 +58,7 @@ const ProductPrice = () => {
             component="h4"
             variant="h6"
           >
-            $250.00
+            ${productDetails.originalPrice.toFixed(2)}
           </Typography>
         </Grid>
       </Grid>

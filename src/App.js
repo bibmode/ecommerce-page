@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import ImageSlides from "./components/ImageSlides";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
-import { useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const appTheme = createTheme({
   palette: {
@@ -33,8 +33,24 @@ const appTheme = createTheme({
   },
 });
 
+export const AppContext = createContext(null);
+
 function App() {
   const [cart, setCart] = useState(false);
+  const [emptyCart, setEmptyCart] = useState(true);
+  const [productDetails, setProductDetails] = useState({
+    originalPrice: 250,
+    discount: 50,
+    quantity: 0,
+    name: "Fall Limited Edition Sneakers",
+    productInfo:
+      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+  });
+
+  useEffect(() => {
+    console.log(productDetails);
+    console.log(emptyCart);
+  }, [productDetails, emptyCart]);
 
   const toggleCart = () => {
     setCart(!cart);
@@ -42,12 +58,22 @@ function App() {
 
   return (
     <ThemeProvider theme={appTheme}>
-      <div className="App">
-        {cart && <Cart />}
-        <NavBar toggleCart={() => toggleCart()} />
-        <ImageSlides />
-        <Product />
-      </div>
+      <AppContext.Provider
+        value={{
+          emptyCart,
+          setEmptyCart,
+          toggleCart,
+          productDetails,
+          setProductDetails,
+        }}
+      >
+        <div className="App">
+          {cart && <Cart />}
+          <NavBar />
+          <ImageSlides />
+          <Product />
+        </div>
+      </AppContext.Provider>
     </ThemeProvider>
   );
 }

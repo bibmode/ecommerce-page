@@ -6,6 +6,9 @@ import { Typography } from "@mui/material";
 import ProductPrice from "./ProductPrice";
 import AddOptions from "./AddOptions";
 
+import { AppContext } from "../App";
+import { useContext } from "react";
+
 const useStyle = makeStyles((theme) => ({
   box: {
     paddingTop: theme.spacing(2),
@@ -17,6 +20,9 @@ const useStyle = makeStyles((theme) => ({
 const Product = () => {
   const classes = useStyle();
 
+  // use context
+  const { productDetails } = useContext(AppContext);
+
   return (
     <Box className={classes.box}>
       <Typography component="h3" variant="h6" color="primary" mb={1.5}>
@@ -24,13 +30,11 @@ const Product = () => {
       </Typography>
 
       <Typography component="h2" variant="h5" color="textPrimary" mb={1.5}>
-        Fall Limited Edition Sneakers
+        {productDetails.name}
       </Typography>
 
       <Typography color="GrayText" variant="body1" mb={1.5}>
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they’ll withstand everything the
-        weather can offer.
+        {productDetails.productInfo}
       </Typography>
 
       <ProductPrice />
