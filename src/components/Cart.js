@@ -65,7 +65,7 @@ const Cart = () => {
         ) : (
           <>
             <CartItem />
-            <MyButton label="Checkout" shadow={true} />
+            <MyButton btnFunction="checkout" label="Checkout" shadow={true} />
           </>
         )}
       </Items>

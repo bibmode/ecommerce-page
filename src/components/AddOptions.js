@@ -71,6 +71,7 @@ const AddOptions = () => {
       </Grid>
       <Grid item xs={12} mb={7}>
         <MyButton
+          btnFunction="addItem"
           shadow={false}
           label="Add to cart"
           icon={<ShoppingCartOutlinedIcon />}

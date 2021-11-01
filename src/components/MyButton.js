@@ -14,17 +14,27 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const MyButton = ({ label, icon, shadow }) => {
+const MyButton = ({ label, icon, shadow, btnFunction }) => {
   const props = {
     elevate: `${!shadow ? "0 1rem 2rem #ffe6cc !important" : "0"}`,
   };
 
   const classes = useStyle(props);
-  const { setEmptyCart } = useContext(AppContext);
+  const { setEmptyCart, setProductDetails, productDetails } =
+    useContext(AppContext);
+
+  const btnCustomActions = () => {
+    if (btnFunction === "addItem" && productDetails.quantity > 0) {
+      setEmptyCart(false);
+      setProductDetails({ ...productDetails, quantity: 0 });
+    } else {
+      setEmptyCart(true);
+    }
+  };
 
   return (
     <Button
-      onClick={() => setEmptyCart(false)}
+      onClick={btnCustomActions}
       className={classes.btn}
       variant="contained"
       fullWidth
