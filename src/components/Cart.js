@@ -45,20 +45,11 @@ const Items = styled.div`
   padding-inline: 24px;
 `;
 
-const Cart = ({ myCart }) => {
+const Cart = () => {
   const classes = useStyles();
 
   // use context
-  const { emptyCart, productDetails, setCart, cart } = useContext(AppContext);
-
-  useEffect(() => {
-    cart &&
-      document.addEventListener("click", (e) => {
-        if (!document.querySelector("#cart").contains(e.target)) {
-          setCart(!cart);
-        }
-      });
-  }, [myCart, setCart, cart]);
+  const { emptyCart, productDetails } = useContext(AppContext);
 
   return (
     <Card id="cart">

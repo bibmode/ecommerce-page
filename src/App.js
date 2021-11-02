@@ -51,9 +51,13 @@ function App() {
     setCart(!cart);
   };
 
-  // const cartRef = useRef(null);
+  const cartRef = useRef(null);
 
-  const myCart = useCallback((node) => {}, []);
+  const handler = (e) => {
+    if (cart && !cartRef.current?.contains(e.target)) {
+      setCart(false);
+    }
+  };
 
   return (
     <ThemeProvider theme={appTheme}>
@@ -68,8 +72,12 @@ function App() {
           cart,
         }}
       >
-        <div className="App">
-          {cart && <Cart myCart={myCart} />}
+        <div className="App" onClick={handler}>
+          {cart && (
+            <div ref={cartRef}>
+              <Cart />
+            </div>
+          )}
           <NavBar />
           <ImageSlides />
           <Product />

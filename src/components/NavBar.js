@@ -56,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   // use context
-  const { toggleCart, productDetails, emptyCart } = useContext(AppContext);
+  const { toggleCart, productDetails, emptyCart, setCart, cart } =
+    useContext(AppContext);
 
   const classes = useStyles();
 
@@ -86,7 +87,10 @@ const NavBar = () => {
       <IconButton
         className={classes.cart}
         aria-label="open shopping cart"
-        onClick={toggleCart}
+        onClick={() => {
+          toggleCart();
+          setCart(!cart);
+        }}
       >
         <ShoppingCartOutlinedIcon className={classes.icon} />
         {productDetails.quantity > 0 && !emptyCart && (
