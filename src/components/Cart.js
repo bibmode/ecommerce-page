@@ -10,7 +10,7 @@ import CartItem from "./CartItem";
 import MyButton from "./MyButton";
 
 import { AppContext } from "../App";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 const useStyles = makeStyles((theme) => ({
   emptyCartText: {

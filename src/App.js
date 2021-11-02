@@ -37,6 +37,7 @@ export const AppContext = createContext(null);
 
 function App() {
   const [cart, setCart] = useState(false);
+  const [initialVal, setInitialVal] = useState(0);
   const [emptyCart, setEmptyCart] = useState(true);
   const [productDetails, setProductDetails] = useState({
     originalPrice: 250,
@@ -70,6 +71,8 @@ function App() {
           setProductDetails,
           setCart,
           cart,
+          initialVal,
+          setInitialVal,
         }}
       >
         <div className="App" onClick={handler}>

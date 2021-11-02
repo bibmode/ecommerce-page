@@ -3,7 +3,7 @@ import { Button, Grid } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { makeStyles } from "@mui/styles";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import MyButton from "./MyButton";
 import { AppContext } from "../App";
 
@@ -21,28 +21,18 @@ const useStyle = makeStyles((theme) => ({
 const AddOptions = () => {
   const classes = useStyle();
   // use context
-  const { productDetails, setProductDetails, setEmptyCart } =
-    useContext(AppContext);
+  const {
+    productDetails,
+    setProductDetails,
+    setEmptyCart,
+    initialVal,
+    setInitialVal,
+  } = useContext(AppContext);
 
   const handleQuantity = (operation) => {
     operation
-      ? setProductDetails({
-          ...productDetails,
-          quantity: productDetails.quantity + 1,
-        })
-      : setProductDetails(
-          productDetails.quantity !== 0
-            ? {
-                ...productDetails,
-                quantity: productDetails.quantity - 1,
-              }
-            : {
-                ...productDetails,
-                quantity: 0,
-              }
-        );
-
-    productDetails === 0 && setEmptyCart(true);
+      ? setInitialVal(initialVal + 1)
+      : setInitialVal(initialVal !== 0 ? initialVal - 1 : 0);
   };
 
   return (
@@ -63,7 +53,7 @@ const AddOptions = () => {
         >
           -
         </Button>
-        <h3>{productDetails.quantity}</h3>
+        <h3>{initialVal}</h3>
         <Button
           className={classes.quantityBtn}
           onClick={() => handleQuantity(true)}

@@ -20,11 +20,28 @@ const MyButton = ({ label, icon, shadow, btnFunction }) => {
   };
 
   const classes = useStyle(props);
-  const { setEmptyCart, productDetails } = useContext(AppContext);
+  const {
+    setEmptyCart,
+    productDetails,
+    setProductDetails,
+    initialVal,
+    setInitialVal,
+  } = useContext(AppContext);
+
+  const handleAddToCart = () => {
+    setProductDetails({
+      ...productDetails,
+      quantity: initialVal,
+    });
+
+    setEmptyCart(false);
+  };
 
   const btnCustomActions = () => {
-    if (btnFunction === "addItem" && productDetails.quantity > 0) {
+    if (btnFunction === "addItem" && initialVal > 0) {
       setEmptyCart(false);
+      handleAddToCart();
+      setInitialVal(0);
     } else {
       setEmptyCart(true);
     }
