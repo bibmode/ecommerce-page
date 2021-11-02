@@ -3,7 +3,7 @@ import { Button, Grid } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { makeStyles } from "@mui/styles";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import MyButton from "./MyButton";
 import { AppContext } from "../App";
 

@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import ImageSlides from "./components/ImageSlides";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
-import { createContext, useRef, useState, useEffect, useCallback } from "react";
+import { createContext, useRef, useState } from "react";
 
 const appTheme = createTheme({
   palette: {
@@ -29,6 +29,15 @@ const appTheme = createTheme({
       fontWeight: 500,
       fontSize: "0.9rem",
       lineHeight: "1.5rem",
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1400,
+      xl: 1536,
     },
   },
 });

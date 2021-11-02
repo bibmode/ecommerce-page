@@ -1,5 +1,5 @@
 // components
-import { Avatar, IconButton, SwipeableDrawer } from "@mui/material";
+import { Avatar, IconButton, SwipeableDrawer, Container } from "@mui/material";
 
 //icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -11,7 +11,7 @@ import { useContext, useState } from "react";
 import Menu from "./Menu";
 
 import { AppContext } from "../App";
-import { orange } from "@mui/material/colors";
+import { grey, orange } from "@mui/material/colors";
 import { Box } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,21 +20,37 @@ const useStyles = makeStyles((theme) => ({
   },
   iconBtn: {
     paddingLeft: "0 !important",
+    [theme.breakpoints.up("md")]: {
+      display: "none !important",
+    },
   },
   container: {
     display: "flex",
     alignItems: "center",
     padding: theme.spacing(1.5),
-    paddingInline: theme.spacing(3),
+    paddingInline: theme.spacing(1),
+    [theme.breakpoints.up("md")]: {
+      paddingBlock: theme.spacing(3),
+      paddingInline: theme.spacing(0),
+      borderBottom: "1px solid #e0e0e0",
+    },
   },
   logo: {
     marginRight: "auto",
     marginBottom: "5px",
+    [theme.breakpoints.up("md")]: {
+      marginRight: theme.spacing(1),
+    },
   },
   avatar: {
     marginLeft: theme.spacing(1),
     width: "30px !important",
     height: "30px !important",
+    [theme.breakpoints.up("md")]: {
+      marginLeft: theme.spacing(4),
+      width: "50px !important",
+      height: "50px !important",
+    },
   },
   cart: {
     position: "relative",
@@ -51,6 +67,19 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
     background: orange[600],
     color: "#fff",
+  },
+  links: {
+    display: "flex",
+    listStyle: "none",
+    marginRight: "auto",
+    "& > * > *": {
+      textDecoration: "none",
+      color: grey[600],
+      marginRight: theme.spacing(4),
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
 }));
 
@@ -72,47 +101,99 @@ const NavBar = () => {
   };
 
   return (
-    <nav className={classes.container}>
-      {/* nav bar components */}
-      <IconButton
-        className={classes.iconBtn}
-        onClick={handleDrawer}
-        aria-label="open drawer"
-      >
-        <MenuIcon className={classes.icon} />
-      </IconButton>
+    <Container maxWidth="lg">
+      <nav className={classes.container}>
+        {/* nav bar components */}
+        <IconButton
+          className={classes.iconBtn}
+          onClick={handleDrawer}
+          aria-label="open drawer"
+        >
+          <MenuIcon className={classes.icon} />
+        </IconButton>
 
-      <img className={classes.logo} src="images/logo.svg" alt="page logo" />
+        <img className={classes.logo} src="images/logo.svg" alt="page logo" />
 
-      <IconButton
-        className={classes.cart}
-        aria-label="open shopping cart"
-        onClick={() => {
-          toggleCart();
-          setCart(!cart);
-        }}
-      >
-        <ShoppingCartOutlinedIcon className={classes.icon} />
-        {productDetails.quantity > 0 && !emptyCart && (
-          <Box className={classes.cartQuantity}>{productDetails.quantity}</Box>
-        )}
-      </IconButton>
-      <Avatar
-        className={classes.avatar}
-        alt="user image"
-        src="images/image-avatar.png"
-      />
+        <Box component="ul" className={classes.links}>
+          <li>
+            <a
+              href="https://www.frontendmentor.io/profile/bibmode"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Collections
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.frontendmentor.io/profile/bibmode"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Men
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.frontendmentor.io/profile/bibmode"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Women
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.frontendmentor.io/profile/bibmode"
+              target="_blank"
+              rel="noreferrer"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.frontendmentor.io/profile/bibmode"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Contact
+            </a>
+          </li>
+        </Box>
 
-      {/* drawer */}
-      <SwipeableDrawer
-        anchor={"left"}
-        open={drawer}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-      >
-        <Menu handleDrawer={handleDrawer} />
-      </SwipeableDrawer>
-    </nav>
+        <IconButton
+          className={classes.cart}
+          aria-label="open shopping cart"
+          onClick={() => {
+            toggleCart();
+            setCart(!cart);
+          }}
+        >
+          <ShoppingCartOutlinedIcon className={classes.icon} />
+          {productDetails.quantity > 0 && !emptyCart && (
+            <Box className={classes.cartQuantity}>
+              {productDetails.quantity}
+            </Box>
+          )}
+        </IconButton>
+        <Avatar
+          className={classes.avatar}
+          alt="user image"
+          src="images/image-avatar.png"
+        />
+
+        {/* drawer */}
+        <SwipeableDrawer
+          anchor={"left"}
+          open={drawer}
+          onClose={toggleDrawer(false)}
+          onOpen={toggleDrawer(true)}
+        >
+          <Menu handleDrawer={handleDrawer} />
+        </SwipeableDrawer>
+      </nav>
+    </Container>
   );
 };
 
