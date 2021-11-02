@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 
 //material styling
 import { makeStyles } from "@mui/styles";
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import ProductPrice from "./ProductPrice";
 import AddOptions from "./AddOptions";
 

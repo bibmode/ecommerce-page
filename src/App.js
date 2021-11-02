@@ -2,8 +2,6 @@ import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { orange } from "@mui/material/colors";
 import NavBar from "./components/NavBar";
-import ImageSlides from "./components/ImageSlides";
-import Product from "./components/Product";
 import Cart from "./components/Cart";
 import { createContext, useRef, useState } from "react";
 import MainSection from "./components/MainSection";
