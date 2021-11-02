@@ -7,7 +7,7 @@ import ImagePicker from "./ImagePicker";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingInline: "4rem !important",
+    paddingInline: "3rem !important",
     [theme.breakpoints.down("sm")]: {
       paddingInline: "0 !important",
     },
@@ -19,7 +19,7 @@ const MainSection = () => {
 
   return (
     <Container className={classes.container} maxWidth="lg">
-      <Grid container alignItems="center" spacing={{ xs: 1, sm: 2, md: 12 }}>
+      <Grid container alignItems="center" spacing={{ xs: 1, sm: 2, md: 10 }}>
         <Grid item xs={12} sm={6}>
           <ImageSlides className={classes.slides} />
           <ImagePicker className={classes.picker} />

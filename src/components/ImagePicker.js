@@ -14,6 +14,15 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     borderRadius: 15,
   },
+  optionPhoto: {
+    width: "100%",
+    borderRadius: 8,
+  },
+  options: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gridGap: theme.spacing(3),
+  },
 }));
 
 const ImagePicker = () => {
@@ -32,6 +41,15 @@ const ImagePicker = () => {
         src={images[0]}
         alt="product showcase"
       />
+      <Box className={classes.options} mt={3}>
+        {images.map((image, index) => (
+          <img
+            className={classes.optionPhoto}
+            src={image}
+            alt={`product demo ${index}`}
+          />
+        ))}
+      </Box>
     </Box>
   );
 };
