@@ -27,13 +27,18 @@ const Card = styled.div`
   position: absolute;
   margin-left: 50%;
   transform: translateX(-50%);
-  width: min(95vw, 40rem);
+  width: min(95vw, 407px);
   z-index: 1000;
   top: 4.5rem;
   background-color: #fff;
   border-radius: 0.6rem;
   text-align: left;
   box-shadow: 0 1rem 2rem -1rem rgba(38, 38, 38, 0.4);
+
+  @media only screen and (min-width: 600px) {
+    margin-left: 80%;
+    top: 5rem;
+  }
 `;
 
 const Items = styled.div`
@@ -42,7 +47,7 @@ const Items = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-inline: 24px;
+  padding: 24px 28px;
 `;
 
 const Cart = () => {
