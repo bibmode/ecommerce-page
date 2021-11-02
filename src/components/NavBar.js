@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: theme.spacing(0),
       borderBottom: "1px solid #e0e0e0",
     },
+    [theme.breakpoints.up("sm")]: {
+      marginBottom: theme.spacing(8),
+    },
   },
   logo: {
     marginRight: "auto",

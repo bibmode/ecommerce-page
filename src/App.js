@@ -6,6 +6,7 @@ import ImageSlides from "./components/ImageSlides";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 import { createContext, useRef, useState } from "react";
+import MainSection from "./components/MainSection";
 
 const appTheme = createTheme({
   palette: {
@@ -91,8 +92,7 @@ function App() {
             </div>
           )}
           <NavBar />
-          <ImageSlides />
-          <Product />
+          <MainSection />
         </div>
       </AppContext.Provider>
     </ThemeProvider>
