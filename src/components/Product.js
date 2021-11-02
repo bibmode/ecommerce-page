@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 
 //material styling
 import { makeStyles } from "@mui/styles";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import ProductPrice from "./ProductPrice";
 import AddOptions from "./AddOptions";
 
@@ -14,6 +14,18 @@ const useStyle = makeStyles((theme) => ({
     paddingTop: theme.spacing(2),
     paddingInline: theme.spacing(3),
     textAlign: "left",
+  },
+  name: {
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2.7rem !important",
+      lineHeight: "1.1 !important",
+      marginBottom: "2rem !important",
+    },
+  },
+  info: {
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1rem !important",
+    },
   },
 }));
 
@@ -29,11 +41,22 @@ const Product = () => {
         SNEAKER COMPANY
       </Typography>
 
-      <Typography component="h2" variant="h5" color="textPrimary" mb={1.5}>
+      <Typography
+        className={classes.name}
+        component="h2"
+        variant="h5"
+        color="textPrimary"
+        mb={1.5}
+      >
         {productDetails.name}
       </Typography>
 
-      <Typography color="GrayText" variant="body1" mb={1.5}>
+      <Typography
+        className={classes.info}
+        color="GrayText"
+        variant="body1"
+        mb={1.5}
+      >
         {productDetails.productInfo}
       </Typography>
 

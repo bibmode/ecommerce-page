@@ -8,13 +8,28 @@ import MyButton from "./MyButton";
 import { AppContext } from "../App";
 
 const useStyle = makeStyles((theme) => ({
+  container: {
+    width: "100% !important",
+    [theme.breakpoints.up("lg")]: {
+      marginLeft: "0 !important",
+    },
+  },
   quantityBtn: {
     fontWeight: "700 !important",
     fontSize: "1.8rem !important",
+    padding: "0 !important",
   },
   quantityContainer: {
     backgroundColor: "hsl(223, 64%, 98%)",
     borderRadius: 10,
+    marginBottom: "1rem !important",
+    paddingLeft: "0 !important",
+    [theme.breakpoints.up("lg")]: {
+      marginBottom: "0 !important",
+    },
+  },
+  numberDisplay: {
+    marginBlock: "0.5rem !important",
   },
 }));
 
@@ -30,16 +45,20 @@ const AddOptions = () => {
   };
 
   return (
-    <Grid container>
+    <Grid
+      className={classes.container}
+      container
+      alignItems="flex-start"
+      columnSpacing={{ lg: 2 }}
+    >
       <Grid
         className={classes.quantityContainer}
         item
         xs={12}
+        lg={4}
         alignItems="center"
         display="flex"
         justifyContent="space-between"
-        mb={2}
-        mt={3}
       >
         <Button
           className={classes.quantityBtn}
@@ -47,7 +66,7 @@ const AddOptions = () => {
         >
           -
         </Button>
-        <h3>{initialVal}</h3>
+        <h3 className={classes.numberDisplay}>{initialVal}</h3>
         <Button
           className={classes.quantityBtn}
           onClick={() => handleQuantity(true)}
@@ -55,7 +74,7 @@ const AddOptions = () => {
           +
         </Button>
       </Grid>
-      <Grid item xs={12} mb={7}>
+      <Grid item xs={12} lg={8} mb={{ xs: 7, md: 0 }}>
         <MyButton
           btnFunction="addItem"
           shadow={false}

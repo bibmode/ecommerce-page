@@ -3,6 +3,12 @@
   font-family: "Kumbh Sans", sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   width: 35px !important;

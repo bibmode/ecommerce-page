@@ -3,9 +3,11 @@ import ImageSlides from "./ImageSlides";
 import Product from "./Product";
 
 import { makeStyles } from "@mui/styles";
+import ImagePicker from "./ImagePicker";
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    paddingInline: "4rem !important",
     [theme.breakpoints.down("sm")]: {
       paddingInline: "0 !important",
     },
@@ -17,9 +19,10 @@ const MainSection = () => {
 
   return (
     <Container className={classes.container} maxWidth="lg">
-      <Grid container alignItems="center">
+      <Grid container alignItems="center" spacing={{ xs: 1, sm: 2, md: 12 }}>
         <Grid item xs={12} sm={6}>
-          <ImageSlides />
+          <ImageSlides className={classes.slides} />
+          <ImagePicker className={classes.picker} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Product />

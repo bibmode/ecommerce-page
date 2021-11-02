@@ -6,6 +6,17 @@ import "swiper/swiper.min.css";
 // styled components
 import styled from "styled-components";
 
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  slides: {
+    display: "block",
+    [theme.breakpoints.up("sm")]: {
+      display: "none !important",
+    },
+  },
+}));
+
 const ProductImage = styled.img`
   width: 100%;
   max-height: 300px;
@@ -13,6 +24,7 @@ const ProductImage = styled.img`
 `;
 
 const ImageSlides = () => {
+  const classes = useStyles();
   const images = [
     "images/image-product-1.jpg",
     "images/image-product-2.jpg",
@@ -28,6 +40,7 @@ const ImageSlides = () => {
       spaceBetween={0}
       slidesPerView={1}
       navigation={true}
+      className={classes.slides}
     >
       {images.map((image, index) => (
         <SwiperSlide key={index}>
