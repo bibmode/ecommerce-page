@@ -35,14 +35,16 @@ const MyButton = ({ label, icon, shadow, btnFunction }) => {
     });
 
     setEmptyCart(false);
+    setInitialVal(0);
   };
 
   const btnCustomActions = () => {
     if (btnFunction === "addItem" && initialVal > 0) {
       setEmptyCart(false);
       handleAddToCart();
-      setInitialVal(0);
-    } else {
+    }
+
+    if (btnFunction === "checkout") {
       setEmptyCart(true);
     }
   };

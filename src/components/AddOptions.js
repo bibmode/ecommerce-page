@@ -21,18 +21,12 @@ const useStyle = makeStyles((theme) => ({
 const AddOptions = () => {
   const classes = useStyle();
   // use context
-  const {
-    productDetails,
-    setProductDetails,
-    setEmptyCart,
-    initialVal,
-    setInitialVal,
-  } = useContext(AppContext);
+  const { initialVal, setInitialVal } = useContext(AppContext);
 
   const handleQuantity = (operation) => {
     operation
       ? setInitialVal(initialVal + 1)
-      : setInitialVal(initialVal !== 0 ? initialVal - 1 : 0);
+      : setInitialVal(initialVal > 0 ? initialVal - 1 : 0);
   };
 
   return (
