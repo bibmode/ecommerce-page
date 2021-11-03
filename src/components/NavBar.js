@@ -49,10 +49,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     width: "30px !important",
     height: "30px !important",
+    cursor: "pointer",
     [theme.breakpoints.up("md")]: {
       marginLeft: theme.spacing(4),
       width: "50px !important",
       height: "50px !important",
+    },
+    "&:hover": {
+      outline: `2px solid ${orange[600]}`,
     },
   },
   cart: {
@@ -82,6 +86,12 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("md")]: {
       display: "none",
+    },
+  },
+  linkItem: {
+    "&:hover": {
+      color: grey[900],
+      fontWeight: "700 !important",
     },
   },
 }));
@@ -123,6 +133,7 @@ const NavBar = () => {
               href="https://www.frontendmentor.io/profile/bibmode"
               target="_blank"
               rel="noreferrer"
+              className={classes.linkItem}
             >
               Collections
             </a>
@@ -132,6 +143,7 @@ const NavBar = () => {
               href="https://www.frontendmentor.io/profile/bibmode"
               target="_blank"
               rel="noreferrer"
+              className={classes.linkItem}
             >
               Men
             </a>
@@ -141,6 +153,7 @@ const NavBar = () => {
               href="https://www.frontendmentor.io/profile/bibmode"
               target="_blank"
               rel="noreferrer"
+              className={classes.linkItem}
             >
               Women
             </a>
@@ -150,6 +163,7 @@ const NavBar = () => {
               href="https://www.frontendmentor.io/profile/bibmode"
               target="_blank"
               rel="noreferrer"
+              className={classes.linkItem}
             >
               About
             </a>
@@ -159,6 +173,7 @@ const NavBar = () => {
               href="https://www.frontendmentor.io/profile/bibmode"
               target="_blank"
               rel="noreferrer"
+              className={classes.linkItem}
             >
               Contact
             </a>

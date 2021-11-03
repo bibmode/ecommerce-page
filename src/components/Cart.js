@@ -1,4 +1,4 @@
-import { Divider, Typography } from "@mui/material";
+import { Container, Divider, Typography } from "@mui/material";
 
 // styled components
 import styled from "styled-components";
@@ -36,8 +36,13 @@ const Card = styled.div`
   box-shadow: 0 0.8rem 2.2rem -1rem rgba(38, 38, 38, 0.4);
 
   @media only screen and (min-width: 600px) {
-    margin-left: 80%;
     top: 5rem;
+    margin-left: 70%;
+  }
+
+  @media only screen and (min-width: 900px) {
+    top: 5rem;
+    margin-left: 80%;
   }
 `;
 

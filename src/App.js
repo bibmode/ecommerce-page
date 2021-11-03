@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import { createContext, useRef, useState } from "react";
 import MainSection from "./components/MainSection";
+import styled from "styled-components";
 
 const appTheme = createTheme({
   palette: {
