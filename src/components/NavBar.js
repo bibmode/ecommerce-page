@@ -93,9 +93,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   linkItem: {
+    paddingBlock: theme.spacing(4.8),
     "&:hover": {
       color: grey[800],
       fontWeight: "700 !important",
+      borderBottom: `3px solid ${orange[600]}`,
     },
   },
 }));
