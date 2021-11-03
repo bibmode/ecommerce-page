@@ -13,6 +13,7 @@ import Menu from "./Menu";
 import { AppContext } from "../App";
 import { grey, orange } from "@mui/material/colors";
 import { Box } from "@mui/system";
+import Cart from "./Cart";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "none !important",
     },
+  },
+  containerAll: {
+    position: "relative",
   },
   container: {
     display: "flex",
@@ -90,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
   },
   linkItem: {
     "&:hover": {
-      color: grey[900],
+      color: grey[800],
       fontWeight: "700 !important",
     },
   },
@@ -98,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   // use context
-  const { toggleCart, productDetails, emptyCart, setCart, cart } =
+  const { toggleCart, productDetails, emptyCart, setCart, cart, cartRef } =
     useContext(AppContext);
 
   const classes = useStyles();
@@ -114,7 +118,12 @@ const NavBar = () => {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container className={classes.containerAll} maxWidth="lg">
+      {cart && (
+        <div ref={cartRef}>
+          <Cart />
+        </div>
+      )}
       <nav className={classes.container}>
         {/* nav bar components */}
         <IconButton

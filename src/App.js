@@ -82,14 +82,10 @@ function App() {
           cart,
           initialVal,
           setInitialVal,
+          cartRef,
         }}
       >
         <div className="App" onClick={handler}>
-          {cart && (
-            <div ref={cartRef}>
-              <Cart />
-            </div>
-          )}
           <NavBar />
           <MainSection />
         </div>

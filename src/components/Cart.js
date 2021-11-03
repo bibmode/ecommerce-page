@@ -1,4 +1,4 @@
-import { Container, Divider, Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 
 // styled components
 import styled from "styled-components";
@@ -25,24 +25,25 @@ const useStyles = makeStyles((theme) => ({
 
 const Card = styled.div`
   position: absolute;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  width: min(95vw, 365px);
+  /* margin-left: 50%;
+  transform: translateX(-50%); */
+  width: min(92%, 365px);
   z-index: 1000;
   top: 4.5rem;
+  right: 1rem;
   background-color: #fff;
   border-radius: 0.6rem;
   text-align: left;
   box-shadow: 0 0.8rem 2.2rem -1rem rgba(38, 38, 38, 0.4);
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 500px) {
     top: 5rem;
-    margin-left: 70%;
+
+    transform: translateX(0);
   }
 
-  @media only screen and (min-width: 900px) {
-    top: 5rem;
-    margin-left: 80%;
+  @media only screen and (min-width: 1300px) {
+    right: -3rem;
   }
 `;
 
